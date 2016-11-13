@@ -1,0 +1,404 @@
+{
+    "1": {
+        "id": 1,
+        "class": "Sequence",
+        "name": "",
+        "asset-pack": "core",
+        "children": [
+            "10739eeb-fa41-4f6e-9560-3cbd700a21ce",
+            "ea9da429-ada9-4ffe-8979-dc42bf64e977",
+            "3f15a202-fd4a-4904-a294-3d494ca46973",
+            "0c19ee1a-b5c4-4c7e-b255-ed5e18fe7579",
+            "073bc9b1-f141-42f2-aa43-afa697a2ce56",
+            "8b2ed53a-2286-401c-b5a8-2afda297ec28",
+            "35383a1d-72eb-477a-b93c-7c7074b63420",
+            "a8ef46d6-ebfc-4699-b122-b15ab6172c40"
+        ],
+        "decorators": [],
+        "options": {}
+    },
+    "meta": {
+        "version": 1
+    },
+    "3f15a202-fd4a-4904-a294-3d494ca46973": {
+        "id": "3f15a202-fd4a-4904-a294-3d494ca46973",
+        "class": "ExecuteScript",
+        "name": "get time",
+        "options": {
+            "exec": [
+                "() => {",
+                "  ",
+                "   //function timeNow() {",
+                "      var d = new Date();",
+                "      var hr = d.getHours()-6;",
+                "     var min = d.getMinutes();",
+                "    if (min < 10) {",
+                "      min = \"0\" + min;",
+                "    }",
+                "    var time = hr + \":\" + min;",
+                "      //String (time) ;",
+                "    //}",
+                "    ",
+                "   console.log (time);",
+                "   notepad.timeNow = time;",
+                "    //return time;",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "073bc9b1-f141-42f2-aa43-afa697a2ce56": {
+        "id": "073bc9b1-f141-42f2-aa43-afa697a2ce56",
+        "class": "TextToSpeech",
+        "name": "",
+        "options": {
+            "words": "Time to party !",
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "0c19ee1a-b5c4-4c7e-b255-ed5e18fe7579": {
+        "id": "0c19ee1a-b5c4-4c7e-b255-ed5e18fe7579",
+        "class": "TextToSpeechJs",
+        "name": "",
+        "options": {
+            "getWords": [
+                "(callback) => {",
+                "    callback(notepad.timeNow);",
+                "}"
+            ],
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "ea9da429-ada9-4ffe-8979-dc42bf64e977": {
+        "id": "ea9da429-ada9-4ffe-8979-dc42bf64e977",
+        "class": "Subtree",
+        "name": "",
+        "options": {
+            "behaviorPath": "idle.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1,
+        "decorators": [
+            "b2f3f1fa-d4ac-46f7-8f66-ef7c17af7e16"
+        ],
+        "skipped": true
+    },
+    "b2f3f1fa-d4ac-46f7-8f66-ef7c17af7e16": {
+        "id": "b2f3f1fa-d4ac-46f7-8f66-ef7c17af7e16",
+        "class": "SucceedOnListen",
+        "name": "",
+        "options": {
+            "getOptions": [
+                "() => {",
+                "    let options = {",
+                "        heyJibo: false,",
+                "        detectEnd: false,",
+                "        incremental: false,",
+                "        authenticateSpeaker: ''",
+                "    }",
+                "    return options;",
+                "}"
+            ],
+            "rule": "time.rule",
+            "onResult": [
+                "(listener) => {",
+                "    listener.on('cloud', function(asrResult, speakerIds) {",
+                "",
+                "    });",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "8b2ed53a-2286-401c-b5a8-2afda297ec28": {
+        "id": "8b2ed53a-2286-401c-b5a8-2afda297ec28",
+        "class": "Parallel",
+        "name": "",
+        "options": {
+            "succeedOnOne": false
+        },
+        "asset-pack": "core",
+        "parent": 1,
+        "children": [
+            "ab16329c-2428-4e3c-a40c-9e5acc9dc1d5",
+            "e452184a-e596-449c-9949-63613b45bc8b",
+            "737af1ab-0227-4b55-8976-7fc9a585d190",
+            "eb9d5814-c683-45dc-860f-98aa76ea9b68"
+        ]
+    },
+    "737af1ab-0227-4b55-8976-7fc9a585d190": {
+        "id": "737af1ab-0227-4b55-8976-7fc9a585d190",
+        "class": "PlayAnimation",
+        "name": "",
+        "options": {
+            "animPath": "party1.keys",
+            "config": [
+                "(animation) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "8b2ed53a-2286-401c-b5a8-2afda297ec28",
+        "decorators": [
+            "86e6290b-b6e3-4ce8-9b8a-ac0d52ab7320"
+        ]
+    },
+    "652bdd9f-72fa-45e5-b4a2-12aeeee81097": {
+        "id": "652bdd9f-72fa-45e5-b4a2-12aeeee81097",
+        "class": "TimeoutSucceed",
+        "name": "",
+        "options": {
+            "timeout": 14000
+        },
+        "asset-pack": "core"
+    },
+    "e452184a-e596-449c-9949-63613b45bc8b": {
+        "id": "e452184a-e596-449c-9949-63613b45bc8b",
+        "class": "LookAt",
+        "name": "",
+        "options": {
+            "getTarget": [
+                "",
+                "() => {",
+                "let jibo = require('jibo');",
+                "let entity = jibo.lps.getClosestVisualEntity();",
+                "let position = {x:1, y:1, z:1};",
+                "if (entity) {",
+                " console.log('entity ',entity);",
+                " //self.testCondition = false;",
+                " position = {x: entity.position.x, y: entity.position.y, z: entity.position.z};",
+                "}",
+                "return position;",
+                "}",
+                ""
+            ],
+            "isContinuous": true,
+            "config": [
+                "(lookAt) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "8b2ed53a-2286-401c-b5a8-2afda297ec28",
+        "decorators": [
+            "652bdd9f-72fa-45e5-b4a2-12aeeee81097"
+        ]
+    },
+    "ab16329c-2428-4e3c-a40c-9e5acc9dc1d5": {
+        "id": "ab16329c-2428-4e3c-a40c-9e5acc9dc1d5",
+        "class": "PlayAudio",
+        "name": "",
+        "options": {
+            "audioPath": "shots.mp3"
+        },
+        "asset-pack": "core",
+        "parent": "8b2ed53a-2286-401c-b5a8-2afda297ec28"
+    },
+    "eb9d5814-c683-45dc-860f-98aa76ea9b68": {
+        "id": "eb9d5814-c683-45dc-860f-98aa76ea9b68",
+        "class": "PlayAnimation",
+        "name": "",
+        "options": {
+            "animPath": "dance.keys",
+            "config": [
+                "(animation) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "8b2ed53a-2286-401c-b5a8-2afda297ec28",
+        "decorators": [
+            "611a3238-c299-4b32-8410-15644b6536d7"
+        ]
+    },
+    "86e6290b-b6e3-4ce8-9b8a-ac0d52ab7320": {
+        "id": "86e6290b-b6e3-4ce8-9b8a-ac0d52ab7320",
+        "class": "WhileCondition",
+        "name": "",
+        "options": {
+            "init": [
+                "() => {",
+                "  self.count = 5;",
+                "  ",
+                "  ",
+                "  ",
+                "  ",
+                "}"
+            ],
+            "conditional": [
+                "() => {",
+                "  self.count--;",
+                "  return self.count !== 0;",
+                "",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "611a3238-c299-4b32-8410-15644b6536d7": {
+        "id": "611a3238-c299-4b32-8410-15644b6536d7",
+        "class": "WhileCondition",
+        "name": "",
+        "options": {
+            "init": [
+                "() => {",
+                "  self.count = 7;",
+                "  ",
+                "  ",
+                "  ",
+                "  ",
+                "}"
+            ],
+            "conditional": [
+                "() => {",
+                "  self.count--;",
+                "  return self.count !== 0;",
+                "",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "a8ef46d6-ebfc-4699-b122-b15ab6172c40": {
+        "id": "a8ef46d6-ebfc-4699-b122-b15ab6172c40",
+        "class": "Subtree",
+        "name": "",
+        "options": {
+            "behaviorPath": "idle.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "35383a1d-72eb-477a-b93c-7c7074b63420": {
+        "id": "35383a1d-72eb-477a-b93c-7c7074b63420",
+        "class": "PlayAnimation",
+        "name": "",
+        "options": {
+            "animPath": "greeting.keys",
+            "config": [
+                "(animation) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "10739eeb-fa41-4f6e-9560-3cbd700a21ce": {
+        "id": "10739eeb-fa41-4f6e-9560-3cbd700a21ce",
+        "class": "Parallel",
+        "name": "",
+        "options": {
+            "succeedOnOne": true
+        },
+        "asset-pack": "core",
+        "parent": 1,
+        "children": [
+            "23745f17-6366-4469-a782-46faecde778b",
+            "3dfa36b9-cb42-4504-b44f-6bd84a86f65e"
+        ]
+    },
+    "3dfa36b9-cb42-4504-b44f-6bd84a86f65e": {
+        "id": "3dfa36b9-cb42-4504-b44f-6bd84a86f65e",
+        "class": "Listen",
+        "name": "",
+        "options": {
+            "getOptions": [
+                "() => {",
+                "    let options = {",
+                "        heyJibo: false,",
+                "        detectEnd: false,",
+                "        incremental: false,",
+                "        authenticateSpeaker: ''",
+                "    }",
+                "    return options;",
+                "}"
+            ],
+            "rule": "time.rule",
+            "onResult": [
+                "(listener) => {",
+                "   listener.on('cloud', function(asrResult, speakerIds) {",
+                "    console.log(\"changes def happening\");",
+                "      console.log(asrResult.NLParse);",
+                "    ",
+                "      if(asrResult.NLParse.clock) {",
+                "          notepad.party = true;",
+                "      }",
+                "      ",
+                "    });",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "10739eeb-fa41-4f6e-9560-3cbd700a21ce",
+        "skipped": false,
+        "decorators": [
+            "2e153837-d520-464b-a099-56dbed563a39"
+        ]
+    },
+    "23745f17-6366-4469-a782-46faecde778b": {
+        "id": "23745f17-6366-4469-a782-46faecde778b",
+        "class": "Subtree",
+        "name": "",
+        "options": {
+            "behaviorPath": "idle.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "10739eeb-fa41-4f6e-9560-3cbd700a21ce",
+        "decorators": []
+    },
+    "2e153837-d520-464b-a099-56dbed563a39": {
+        "id": "2e153837-d520-464b-a099-56dbed563a39",
+        "class": "WhileCondition",
+        "name": "",
+        "options": {
+            "init": [
+                "() => {",
+                "}"
+            ],
+            "conditional": [
+                "() => {",
+                "    return !notepad.party;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    }
+}
